@@ -1,27 +1,71 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+.loader {
+  height: 100vh;
 }
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+.wrapper {
+  height: 160vh;
+  color: #333333;
+}
+.featureWrapper {
+  height: 60vh;
+}
+.main1 {
+  height: calc(100vh);
+  text-transform: uppercase;
+}
+nav {
+  z-index: 2;
+  position: fixed;
+}
+.light {
+  background: #007dbe;
+}
+.glossarySection {
+  height: calc(200vh - 80px);
+}
+.sidebar {
+  height: calc(150vh - 80px);
+  z-index: 1;
+}
+.left-1\/6 {
+  left: 16.66%;
+}
+.right {
+  right: 3.55%;
+  width: 28%;
+  z-index: 1;
+}
+.accountwrapper {
+  height: 100vh;
+}
+.up {
+  height: calc(((100vh - 80px) * 4 / 7) - 15px);
+  margin-top: calc(15px * 2 / 3);
+}
+.down {
+  height: calc(((100vh - 80px) * 3 / 7) - 15px);
+  margin-bottom: calc(15px * 2 / 3);
+}
+.hidden {
+  display: none;
+}
+.slider {
+  display: none;
+}
+.vertical {
+  height: 200vh;
+}
+@media (max-width: 640px) {
+  img {
+    height: 35px;
+    width: 140px;
   }
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  .wrapper {
+    height: 140vh;
+  }
+  .featureWrapper {
+    height: 40vh;
+  }
 }
