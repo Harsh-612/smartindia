@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Nav from "./Nav";
-
+import Link from "next/link";
 gsap.registerPlugin(ScrollTrigger);
 const Ordinary = () => {
   useEffect(() => {
@@ -15,7 +15,7 @@ const Ordinary = () => {
       {
         color: "#333333",
         x: 0,
-        duration: 2,
+        duration: 1.5,
         delay: 0,
         ease: "ease-in",
       }
@@ -29,33 +29,33 @@ const Ordinary = () => {
       {
         color: "#007DBE",
         x: 0,
-        duration: 2,
+        duration: 1.5,
         delay: 0,
         ease: "ease-in",
       }
     );
     gsap.fromTo(
-      "section>div>div>button",
+      "section>div>div",
       {
         opacity: 0,
       },
       {
         opacity: 1,
-        duration: 1,
-        delay: 2,
+        duration: 0.7,
+        delay: 1.5,
       }
     );
     gsap.to(".slider", {
       display: "block",
-      duration: 1,
-      delay: 2.5,
+      duration: 0.8,
+      delay: 1.8,
     });
     gsap.to(".slider", {
       y: -20,
       yoyo: true,
       repeat: -1,
       duration: 0.5,
-      delay: 2.5,
+      delay: 1.8,
     });
   }, []);
   useEffect(() => {
@@ -126,9 +126,11 @@ const Ordinary = () => {
             with <span>Legal Wisdom</span>
           </h1>
           <div className="flex mt-10 sm:text-2xl text-base sm:gap-14 gap-4">
-            <button className="light px-3 py-2 text-white font-normal rounded-lg">
-              REGISTER NOW
-            </button>
+            <Link href="account">
+              <button className="light px-3 py-2 text-white font-normal rounded-lg">
+                REGISTER NOW
+              </button>
+            </Link>
             <button className="border-black border-2 px-3 py-2 rounded-lg">
               LEARN MORE
             </button>
@@ -184,8 +186,9 @@ const Ordinary = () => {
           </article>
         </div>
       </section>
-      <footer className="absolute w-full bottom-0 h-16 border-t border-gray-400 flex justify-center items-center text-gray-600 font-light text-sm">
-        By NexTech
+      <footer className="absolute w-full bottom-0 h-16 border-t border-gray-400 flex justify-between items-center text-gray-600 font-light text-sm px-10">
+        <div>by NexTech</div>
+        <div>Credits:Pictures taken from freepik.com</div>
       </footer>
     </div>
   );

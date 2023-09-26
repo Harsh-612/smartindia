@@ -11,7 +11,7 @@ const Loader = () => {
       {
         scale: 1,
         opacity: 1,
-        duration: 2,
+        duration: 1.4,
       }
     );
     gsap.fromTo(
@@ -23,7 +23,7 @@ const Loader = () => {
       {
         background: "#007DBE",
         width: "100%",
-        duration: 3,
+        duration: 2,
         ease: "ease-out",
       }
     );
