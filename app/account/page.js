@@ -8,6 +8,7 @@ import {
   signInWithPopup,
 } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
+import Footer from "../components/Footer";
 const page = () => {
   const [user, setuser] = useAuthState(auth);
   const googleAuth = new GoogleAuthProvider();
@@ -20,14 +21,17 @@ const page = () => {
   };
   useEffect(() => {
     console.log(user);
+    if (user) {
+      alert("Welcome " + user.displayName);
+    }
   }, [user]);
 
   return (
-    <div className="w-full accountwrapper relative bg-sky-100">
+    <div className="w-full accountwrapper relative bg-sky-50">
       <Nav />
       <div className="h-full w-full flex justify-center items-center">
-        <div className=" h-96 border bg-white w-1/3 mt-20 rounded-lg border-gray-400 flex justify-center items-center flex-col">
-          <h1 className="text-3xl font-bold mb-10">Login to LawWiz</h1>
+        <div className=" h-96 border bg-white w-1/3 mt-20 rounded-lg border-gray-400 flex items-center flex-col shadow-2xl">
+          <h1 className="text-3xl font-bold mb-10 mt-8">Login to LawWiz</h1>
           <form className="w-full flex flex-col gap-4 items-center">
             <input
               type="text"
@@ -52,7 +56,6 @@ const page = () => {
           >
             Sign-In with Google
           </button>
-
           <div
             onClick={() => {
               auth.signOut();

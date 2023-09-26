@@ -57,6 +57,10 @@ nav {
 .vertical {
   height: 200vh;
 }
+*::selection {
+  background: #000;
+  color: #fff;
+}
 @media (max-width: 640px) {
   img {
     height: 35px;

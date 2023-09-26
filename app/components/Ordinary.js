@@ -3,6 +3,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Nav from "./Nav";
 import Link from "next/link";
+import Footer from "./Footer";
 gsap.registerPlugin(ScrollTrigger);
 const Ordinary = () => {
   useEffect(() => {
@@ -137,7 +138,7 @@ const Ordinary = () => {
           </div>
         </div>
         <button
-          className="fixed bottom-10 border rounded-full bg-blue-800 border-gray-400 sm:text-2xl text-2xl sm:px-3 sm:py-1 px-4 py-2 slider text-white font-light"
+          className="fixed bottom-10 border rounded-full light border-gray-400 sm:text-2xl text-2xl sm:px-3 sm:py-1 px-4 py-2 slider text-white font-light"
           onClick={scrollToBottom}
         >
           SLIDE ↓
@@ -147,8 +148,8 @@ const Ordinary = () => {
         <h1 className="sm:mb-10 sm:mt-0 -mt-5  mb-5 sm:text-5xl text-2xl">
           OUR FEATURES
         </h1>
-        <div className="features sm:flex gap-5 mt-5 grid grid-cols-2 grid-rows-2 gap-x-3 gap-y-3">
-          <article className=" sm:w-56 sm:h-56 w-40 h-40  rounded-2xl bg-white border border-gray-400 ">
+        <div className="features sm:flex gap-8 mt-5 grid grid-cols-2 grid-rows-2 gap-x-3 gap-y-3">
+          <article className=" sm:w-56 sm:h-56 w-40 h-40  rounded-2xl bg-white border border-gray-400 hover:scale-105 hover:shadow-2xl">
             <img
               src="/Images/Authentication.png"
               className="sm:h-4/5 w-full border-gray-200 h-3/4 border-b m-auto py-3 px-6"
@@ -157,7 +158,7 @@ const Ordinary = () => {
               Secure Authentication
             </h1>
           </article>
-          <article className=" sm:w-56 sm:h-56 w-40 h-40 rounded-2xl bg-white border border-gray-400">
+          <article className=" sm:w-56 sm:h-56 w-40 h-40 rounded-2xl bg-white border border-gray-400 hover:scale-105 hover:shadow-2xl">
             <img
               src="/Images/Forum.png"
               className="sm:h-4/5 w-full border-gray-200 h-3/4 border-b m-auto py-3 px-6"
@@ -166,7 +167,7 @@ const Ordinary = () => {
               Public Forum
             </h1>
           </article>
-          <article className=" sm:w-56 sm:h-56 w-40 h-40 rounded-2xl bg-white border border-gray-400">
+          <article className=" sm:w-56 sm:h-56 w-40 h-40 rounded-2xl bg-white border border-gray-400 hover:scale-105 hover:shadow-2xl">
             <img
               src="/Images/Glossary.png"
               className="sm:h-4/5 w-full border-gray-200 h-3/4 border-b m-auto py-3 px-6"
@@ -175,7 +176,7 @@ const Ordinary = () => {
               Extensive Glossary
             </h1>
           </article>
-          <article className=" sm:w-56 sm:h-56 w-40 h-40 rounded-2xl bg-white border border-gray-400">
+          <article className=" sm:w-56 sm:h-56 w-40 h-40 rounded-2xl bg-white border border-gray-400 hover:scale-105 hover:shadow-2xl">
             <img
               src="/Images/Learn.png"
               className="sm:h-4/5 w-full border-gray-200 h-3/4 border-b m-auto py-3 px-6"
@@ -186,10 +187,7 @@ const Ordinary = () => {
           </article>
         </div>
       </section>
-      <footer className="absolute w-full bottom-0 h-16 border-t border-gray-400 flex justify-between items-center text-gray-600 font-light text-sm px-10">
-        <div>by NexTech</div>
-        <div>Credits:Pictures taken from freepik.com</div>
-      </footer>
+      <Footer />
     </div>
   );
 };
