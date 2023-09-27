@@ -2,22 +2,13 @@
 import React, { useEffect, useState } from "react";
 import Nav from "../components/Nav";
 import { auth } from "@/app/firebase";
-import {
-  GithubAuthProvider,
-  GoogleAuthProvider,
-  signInWithPopup,
-} from "firebase/auth";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
-import Footer from "../components/Footer";
 const page = () => {
   const [user, setuser] = useAuthState(auth);
   const googleAuth = new GoogleAuthProvider();
-  const gitAuth = new GithubAuthProvider();
-  const logingoogle = async () => {
+  const login = async () => {
     const result = await signInWithPopup(auth, googleAuth);
-  };
-  const logingit = async () => {
-    const result = await signInWithPopup(auth, gitAuth);
   };
   useEffect(() => {
     console.log(user);
@@ -52,7 +43,7 @@ const page = () => {
           </div>
           <button
             class="light text-white w-3/4 text-sm py-2 rounded mt-1"
-            onClick={logingoogle}
+            onClick={login}
           >
             Sign-In with Google
           </button>
