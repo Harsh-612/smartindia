@@ -5,6 +5,7 @@ import { database } from "@/app/firebase";
 import { gsap } from "gsap";
 import { collection, addDoc, getDocs } from "firebase/firestore";
 import { toast } from "react-toastify";
+import { serverTimestamp } from "firebase/firestore";
 import "react-toastify/dist/ReactToastify.css";
 const Page = () => {
   const dbInstance = collection(database, "feedback");
@@ -36,6 +37,7 @@ const Page = () => {
         relevance: ratings[1],
         approach: ratings[2],
         ratings: ratings,
+        timestamp: serverTimestamp(),
       });
       toast.success("Feedback Submitted !", {
         position: toast.POSITION.TOP_RIGHT,
