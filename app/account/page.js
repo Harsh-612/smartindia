@@ -1,20 +1,52 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { auth } from "@/app/firebase";
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import {
+  GoogleAuthProvider,
+  signInWithPopup,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 const page = () => {
+  const [email, setemail] = useState("");
+  const [password, setpassword] = useState("");
   const [user, setuser] = useAuthState(auth);
   const googleAuth = new GoogleAuthProvider();
+  const regOrLog = async () => {
+    try {
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      console.log(user);
+      toast.success("Logged in successfully!");
+    } catch (error) {
+      if (error.code === "auth/user-not-found") {
+        try {
+          const userCredential = await createUserWithEmailAndPassword(
+            auth,
+            email,
+            password
+          );
+          console.log(user);
+          toast.success("Account created and logged in successfully!");
+        } catch (error) {
+          console.error(error);
+          toast.error("Error creating account. Please try again.");
+        }
+      } else {
+        console.error(error);
+        toast.error("Error logging in. Wrong Email or Password");
+      }
+    }
+  };
   const login = async () => {
     const result = await signInWithPopup(auth, googleAuth);
   };
-  useEffect(() => {
-    console.log(user);
-    if (user) {
-      alert("Welcome " + user.displayName);
-    }
-  }, [user]);
 
   return (
     <div className="w-full accountwrapper bg-sky-50 flex">
@@ -23,18 +55,29 @@ const page = () => {
           <h1 className="text-3xl font-bold ">Login to LawWiz</h1>
           <form className="w-full flex flex-col gap-4 items-center">
             <input
-              type="text"
+              type="email"
               placeholder="Enter your Email-Id"
               className="border border-gray-400 w-3/4 text-lg px-2 py-1"
+              value={email}
+              onChange={(e) => {
+                setemail(e.target.value);
+              }}
             />
             <input
-              type="text"
+              type="password"
               placeholder="Enter your Password"
               className="border border-gray-400 w-3/4 text-lg px-2 py-1"
+              value={password}
+              onChange={(e) => {
+                setpassword(e.target.value);
+              }}
             />
           </form>
           <div className="flex flex-col items-center  w-3/4">
-            <button class="light text-white py-2 text-sm rounded w-full">
+            <button
+              class="light text-white py-2 text-sm rounded w-full"
+              onClick={regOrLog}
+            >
               Log-in/Register
             </button>
             <div className="text-gray-600 text-sm mt-1">Or</div>
@@ -50,9 +93,7 @@ const page = () => {
             onClick={() => {
               auth.signOut();
             }}
-          >
-            {user ? user.displayName + "  " + user.email : ""}
-          </div>
+          ></div>
         </div>
         <div className="w-1/2 h-full flex justify-center items-center">
           <img src="/Images/justicevector.png" />

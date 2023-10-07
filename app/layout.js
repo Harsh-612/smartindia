@@ -11,8 +11,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
-      <ToastContainer />
+      <body className={inter.className} suppressHydrationWarning={true}>
+        {children}
+        <ToastContainer />
+      </body>
+      
     </html>
   );
 }
