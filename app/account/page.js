@@ -10,7 +10,6 @@ import {
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { Router } from "next/router";
 import { useRouter } from "next/navigation";
 const page = () => {
   const router = useRouter();
