@@ -9,11 +9,10 @@ const forum = () => {
   const getQuestion = async () => {
     const querySnapshot = await getDocs(dbInstance);
     const questionData = querySnapshot.docs.map((item) => {
-      return item.data().post; // Extract the "post" field
+      return item.data().post;
     });
     return questionData;
   };
-
   useEffect(() => {
     getQuestion().then((data) => {
       setquestions(data);

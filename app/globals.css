@@ -73,3 +73,8 @@ nav {
     height: 40vh;
   }
 }
+.feedbackContainer {
+  height: 90vh;
+  width: 100vh;
+  margin-top: 5vh;
+}

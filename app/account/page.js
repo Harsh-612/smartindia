@@ -1,6 +1,5 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import Nav from "../components/Nav";
 import { auth } from "@/app/firebase";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
