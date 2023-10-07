@@ -102,7 +102,7 @@ const page = () => {
               class="light text-white w-full  gap-2 text-sm py-2 rounded mt-1"
               onClick={login}
             >
-              Sign-In with Google
+              <i class="ri-google-fill"></i>Sign-In with Google
             </button>
           </div>
 
