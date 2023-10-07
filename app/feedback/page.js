@@ -2,12 +2,23 @@
 import React, { useEffect, useState } from "react";
 import "remixicon/fonts/remixicon.css";
 import { database } from "@/app/firebase";
+import { gsap } from "gsap";
 import { collection, addDoc, getDocs } from "firebase/firestore";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const Page = () => {
   const dbInstance = collection(database, "feedback");
   const [ratings, setRatings] = useState([0, 0, 0]);
   const [comment, setcomment] = useState("");
   const [total, settotal] = useState(null);
+  useEffect(() => {
+    gsap.fromTo(
+      ".feedbackContainer",
+      { scale: 0, opacity: 0 },
+      { opacity: 1, scale: 1, duration: 1 }
+    );
+  }, []);
+
   useEffect(() => {
     const fetchTotalResponses = async () => {
       const querySnapshot = await getDocs(collection(database, "feedback"));
@@ -25,6 +36,9 @@ const Page = () => {
         relevance: ratings[1],
         approach: ratings[2],
         ratings: ratings,
+      });
+      toast.success("Feedback Submitted !", {
+        position: toast.POSITION.TOP_RIGHT,
       });
       settotal(total + 1);
       setcomment("");
