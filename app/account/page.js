@@ -17,26 +17,34 @@ const page = () => {
   const googleAuth = new GoogleAuthProvider();
   const regOrLog = async () => {
     try {
+      // Update email and password states before calling createUserWithEmailAndPassword
+      const userEmail = email;
+      const userPassword = password;
+
       const userCredential = await signInWithEmailAndPassword(
         auth,
-        email,
-        password
+        userEmail,
+        userPassword
       );
+
       console.log(user);
       toast.success("Logged in successfully!");
     } catch (error) {
-      if (error.code === "auth/user-not-found") {
+      console.log(error);
+      if (error.code === "auth/invalid-login-credentials") {
         try {
+          const userEmail = email;
+          const userPassword = password;
           const userCredential = await createUserWithEmailAndPassword(
             auth,
-            email,
-            password
+            userEmail,
+            userPassword
           );
           console.log(user);
           toast.success("Account created and logged in successfully!");
         } catch (error) {
           console.error(error);
-          toast.error("Error creating account. Please try again.");
+          toast.error("Error logging in. Wrong Email or Password");
         }
       } else {
         console.error(error);
