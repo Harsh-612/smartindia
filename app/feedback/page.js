@@ -77,7 +77,7 @@ const Page = () => {
               }
             </div>
             <textarea
-              className="border border-black mt-4 px-3 py-1 text-sm"
+              className="border border-black mt-4 px-2 py-1 text-sm"
               placeholder="Share your thoughts, we're all ears!"
               cols="73"
               rows="4"
